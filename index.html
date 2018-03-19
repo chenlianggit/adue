@@ -952,6 +952,15 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <li>
 <a href="#toc_34">29.查询认证信息接口</a>
 </li>
+<li>
+<a href="#toc_35">30.广告资质列表</a>
+</li>
+<li>
+<a href="#toc_36">31.获取广告资质info</a>
+</li>
+<li>
+<a href="#toc_37">32.新增保存广告资质</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -4439,6 +4448,366 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <td style="text-align: left">String</td>
 <td style="text-align: left">YES</td>
 <td style="text-align: left">手持身份证</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_35">30.广告资质列表</h2>
+
+<p>请求URL:  /Main/action/Media_usercenter/Dspinfo/getCredibleList</p>
+
+<p>请求方式：POST</p>
+
+<p>请求参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">page</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">页数，默认1</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">每页数量，默认20</td>
+</tr>
+<tr>
+<td style="text-align: left">token</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">登陆状态</td>
+</tr>
+</tbody>
+</table>
+
+<p>返回参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">返回状态 200正确 202 参数等错误</td>
+</tr>
+<tr>
+<td style="text-align: left">msg</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">说明</td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">array见下</td>
+</tr>
+</tbody>
+</table>
+
+<p>data数组：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">rows</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">信息条数</td>
+</tr>
+<tr>
+<td style="text-align: left">count</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">数量</td>
+</tr>
+</tbody>
+</table>
+
+<p>rows数组：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">id</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">资质名称</td>
+</tr>
+<tr>
+<td style="text-align: left">image</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">图片</td>
+</tr>
+<tr>
+<td style="text-align: left">date</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">上传时间</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_36">31.获取广告资质info</h2>
+
+<p>请求URL:  /Main/action/Media_usercenter/Dspinfo/getCredibleInfo</p>
+
+<p>请求方式：POST</p>
+
+<p>请求参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">id</td>
+</tr>
+<tr>
+<td style="text-align: left">token</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">登陆状态</td>
+</tr>
+</tbody>
+</table>
+
+<p>返回参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">返回状态 200正确 202 参数等错误</td>
+</tr>
+<tr>
+<td style="text-align: left">msg</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">说明</td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">array见下</td>
+</tr>
+</tbody>
+</table>
+
+<p>data数组：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">id</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">资质名称</td>
+</tr>
+<tr>
+<td style="text-align: left">image</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">图片</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+
+<h2 id="toc_37">32.新增保存广告资质</h2>
+
+<p>请求URL:  /Main/action/Media_usercenter/Dspinfo/saveCredible</p>
+
+<p>请求方式：POST</p>
+
+<p>请求参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">id</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">资质名称</td>
+</tr>
+<tr>
+<td style="text-align: left">image</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">图片</td>
+</tr>
+<tr>
+<td style="text-align: left">token</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">登陆状态</td>
+</tr>
+</tbody>
+</table>
+
+<p>返回参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">code</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">返回状态 200正确 202 参数等错误</td>
+</tr>
+<tr>
+<td style="text-align: left">msg</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">说明</td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">array见下</td>
+</tr>
+</tbody>
+</table>
+
+<p>data数组：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">id</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">id</td>
 </tr>
 </tbody>
 </table>
