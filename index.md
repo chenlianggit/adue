@@ -3,6 +3,12 @@
 
 # 广告主平台
 
+
+-------
+
+
+
+
 ##0 注意事项
 陈亮ip http://192.168.2.111:8890/
 
@@ -10,7 +16,7 @@
 |:---|:---|:---|:---|
 |code|INT|YES|200正常，202失败，205登录失效|
 
-
+# 首页
 
 ## 1 首页折线图
 请求URL:/Main/action/Report/Report/homeChart
@@ -78,6 +84,8 @@ data数组：
 |cos|string|YES|总花费用|
 |num|string|YES|当前投放广告数|
 
+# 计划
+
 ## 3. 保存计划（新增+修改）
  请求URL:/Main/action/Campaign/Campaign/saveCampaign
  
@@ -138,6 +146,7 @@ data数组：
 |name|INT|YES|名称|
 |budget|string|YES|预算|
 |consumption_rate|INT|YES|消耗速度1标准2加速|
+
 
 ## 5.新增+修改小程序id
 请求URL:  /Main/action/App/App/saveApp
@@ -489,6 +498,14 @@ data数组：
 
 |名称|类型|是否必填|说明|
 |:---|:---|:---|:---|
+|rows|array|YES|信息条数|
+|date|string|YES|日期范围|
+|count|INT|YES|数量|
+
+rows数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
 |id|INT|NO|广告id|
 |name|INT|NO|名称|
 |cpc|INT|NO|单次点击|
@@ -531,17 +548,34 @@ data数组：
 
 |名称|类型|是否必填|说明|
 |:---|:---|:---|:---|
+|rows|array|YES|条数|
+|sum|array|YES|顶部总和|
+|count|INT|YES|数量|
+|date|string|YES|日期范围
+
+rows数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
 |id|INT|NO|广告id|
 |name|INT|NO|名称|
 |budget|INT|NO预算|
-|status|INT|NO|状态|
+|status|INT|YES|状态,1投放，2暂停，3不显示|
+|status_name|string|YES|状态名称|
 |impcount|string|YES|曝光数|
 |clickcount|string|YES|点击数|
 |click_avg_cos|string|YES|点击均价|
 |cos|string|YES|总花费用|
 |ctr|string|YES|点击率|
 
+sum 数组：
 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|impcount|string|YES|总曝光量|
+|clickcount|string|YES|总点击量|
+|cos|string|YES|总花费用|
+|ctr|string|YES|总点击率|
 
 ## 17 报表中心折线图
 请求URL:/Main/action/Report/Report/reportChart
@@ -617,7 +651,7 @@ data数组：
 
 ![](reportList_day.jpg)
 
-## 19.选择已有计划 列表
+## 19.根据计划ID获取广告列表
 请求URL:  /Main/action/Adgroup/Adgroup/getAdgroupNameList
  
  请求方式：POST
@@ -644,7 +678,7 @@ data数组：
 |id|INT|YES|广告ID|
 |name|INT|YES|名称|
 
-## 20.选择已有计划 列表
+## 20.获取全部广告列表
 请求URL:  /Main/action/Adgroup/Adgroup/getaAllAdgroup
  
  请求方式：POST
@@ -670,6 +704,577 @@ data数组：
 |:---|:---|:---|:---|
 |id|INT|YES|广告ID|
 |name|INT|YES|名称|
+
+#财务
+
+## 21.充值
+请求URL:  /Main/action/Finance/Finance/recharge
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|登录状态|
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|day_budget|INT|YES日限额|
+|balance|INT|YES|现金账户|
+|virtual_balance|INT|YES|虚拟与余额|
+|sum|INT|YES|总余额|
+
+## 22.充值列表
+请求URL:  /Main/action/Finance/Finance/rechargeList
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|登录状态|
+|page|INT|YES|页数，默认1|
+|size|INT|YES|每页数量，默认20|
+
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|rows|array|YES|每条信息 |
+|count|INT|YES|数量|
+
+rows数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|ID |
+|date|string|YES|充值时间|
+|type|INT|YES|类型：1现金2虚拟, 现金类型才显示开具发票|
+|type_name|string|INT|充值金额类型名称
+|money|INT|YES|充值金额|
+
+
+## 23.当月可开具发票金额
+请求URL:  /Main/action/Finance/Finance/getValidInvoiceMoney
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|登录状态|
+|date|string|YES|月份日期，2018年7月 例如2018/07/01
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|money|INT|YES|金额|
+
+## 24.修改日限额
+请求URL:  /Main/action/Finance/Finance/updateDayBudget
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|登录状态|
+|day_budget|string|YES|日限额,精确到两位小数
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+
+## 25.新增发票
+请求URL:  /Main/action/Finance/Finance/addInvoice
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|登录状态|
+|date|string|YES|月份日期，2018年7月 例如2018/07/01
+|type|string|YES|发票类型,默认1增值税发票|
+|head|string|YES|发票抬头|
+|project|string|YES|登录状态|
+|money|string|YES|充值金额|
+|name|string|YES|收件人姓名|
+|phone|string|YES|收件人电话|
+|address|string|YES|收件地址|
+
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+
+
+## 26.开票历史列表
+请求URL:  /Main/action/Finance/Finance/getInvoiceList
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|登录状态|
+|page|INT|YES|页数，默认1|
+|size|INT|YES|每页数量，默认20|
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|rows|array|YES|每条信息 |
+|count|INT|YES|数量|
+
+rows数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|ID |
+|apply_time|string|YES|申请时间|
+|money|INT|YES|申请金额|
+|project|string|INT|发票项目
+|month|string|YES|对应充值月份|
+|status|INT|YES|只有1的时候显示取消，开票状态：1进行中2完成3取消|
+|status_name|string|YES|状态名称|
+![](getInvoiceList.png)
+
+## 27.取消发票
+请求URL:  /Main/action/Finance/Finance/changeInvoiceStatus
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|登录状态|
+|id|INT|YES|发票id|
+
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+
+#个人中心
+
+## 28.添加认证信息接口
+ 请求URL:/Main/action/Media_usercenter/Dspinfo/authentication
+ 
+ 请求方式：POST
+ 
+ 请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|token |
+|type|string|YES|用户认证类型1企业2个人|
+|name|STRING|YES|个人类型 开发者名称|
+|idCardHand|STRING|YES|手持个人身份证 |
+|idCardFace|Int|YES|个人身份证正面照片 |
+|idCardBack|string|YES|身份证背面照片  |
+|companyName|string|YES|企业名称  |
+|taxId|string|YES|企业税号  |
+|businessLicense|string|YES|企业营业执照  |
+
+
+
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态码200成功202失败|
+|msg|STRING|YES|状态说明|
+|data|array|YES|空数组|
+
+
+
+## 29.查询认证信息接口
+请求URL:/Main/action/Media_usercenter/Dspinfo/basicInfo
+ 
+请求方式：POST
+ 
+请求参数：
+ 
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|token|string|YES|token |
+
+
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态码200成功202失败|
+|msg|STRING|YES|状态说明|
+|appraisal|STRING|YES|认证1未认证账号审核中 2已认证 0未审核|
+|appraisal_type|STRING|int|认证类型1企业2个人 |
+|payee|STRING|YES|企业类型：收款名称。个人类型：联系人|
+|data|array|YES|数组|
+
+
+企业data数据：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|tax_id|String|YES|企业税号|
+|business_license|String|YES|营业执照|
+|id_card_face|String|YES|法人身份证正面|
+|id_card_back|String|YES|法人身份证背面|
+
+
+个人data数据：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id_card_face|String|YES|法人身份证正面|
+|id_card_back|String|YES|法人身份证背面|
+|id_card_hand|String|YES|手持身份证|
+
+## 30.广告资质列表
+
+请求URL:  /Main/action/Media_usercenter/Dspinfo/getCredibleList
+
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|page|INT|YES|页数，默认1|
+|size|INT|YES|每页数量，默认20|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|rows|array|YES|信息条数|
+|count|INT|YES|数量|
+
+rows数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|name|INT|YES|资质名称|
+|image|INT|YES|图片|
+|date|INT|YES|上传时间|
+
+## 31.获取广告资质info
+
+请求URL:  /Main/action/Media_usercenter/Dspinfo/getCredibleInfo
+
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|name|INT|YES|资质名称|
+|image|INT|YES|图片|
+
+
+
+## 32.新增保存广告资质
+
+请求URL:  /Main/action/Media_usercenter/Dspinfo/saveCredible
+
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|name|INT|YES|资质名称|
+|image|INT|YES|图片|
+|token|string|YES|登陆状态
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+
+## 33.删除广告资质
+
+请求URL:  /Main/action/Media_usercenter/Dspinfo/delCredible
+
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+#后续开发
+
+## 34.删除广告
+
+请求URL:  /Main/action/Adgroup/Adgroup/delAdgroup
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+
+## 35.暂停广告
+
+请求URL:  /Main/action/Adgroup/Adgroup/pauseAdgroup
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+## 36.投放广告
+
+请求URL:  /Main/action/Adgroup/Adgroup/startAdgroup
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+
+## 37.删除计划
+
+请求URL:  /Main/action/Campaign/Campaign/delCampaign 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+
+## 38.暂停计划
+
+请求URL:  /Main/action/Campaign/Campaign/pauseCampaign
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+## 39.投放计划
+
+请求URL:  /Main/action/Campaign/Campaign/startCampaign
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|id|INT|YES|id|
+|token|string|YES|登陆状态|
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+## 40.获得广告cpc
+
+请求URL:  /Main/action/Adgroup/Adgroup/getCpc
+ 
+ 请求方式：POST
+ 
+请求参数：
+
+ 
+返回参数：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|code|INT|YES|返回状态 200正确 202 参数等错误|
+|msg|string|YES|说明|
+|data|array|YES|array见下|
+
+data数组：
+
+|名称|类型|是否必填|说明|
+|:---|:---|:---|:---|
+|min|float|YES|最低价格|
+|max|float|YES|最高价格|
 
 
 
