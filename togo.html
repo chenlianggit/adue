@@ -1,0 +1,1219 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title># 阿里云api</title>
+<style>
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+body {
+  background-color: white;
+}
+
+.markdown-body {
+  min-width: 200px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px;
+
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;;word-wrap: break-word; word-break: break-all;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}
+table td{ word-wrap: break-word !important; word-break: break-all !important; }
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.diff .hljs-header {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-doctag,
+.tex .hljs-formula {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rule .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body,
+.hljs-name {
+  color: #008080;
+}
+
+.hljs-regexp {
+  color: #009926;
+}
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073;
+}
+
+.hljs-built_in {
+  color: #0086b3;
+}
+
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.diff .hljs-change {
+  background: #0086b3;
+}
+
+.hljs-chunk {
+  color: #aaa;
+}
+
+
+</style>
+
+<style> @media print{ .hljs{overflow: visible; word-wrap: break-word !important;} }</style></head><body><div class="markdown-body">
+<h1 id="toc_0">阿里云api</h1>
+
+<ul>
+<li>
+<a href="#toc_0">阿里云api</a>
+<ul>
+<li>
+<a href="#toc_1">1.应用加固接口</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h2 id="toc_1">1.应用加固接口</h2>
+
+<p>请求URL:  <a href="https://jaq.aliyuncs.com/">https://jaq.aliyuncs.com/</a></p>
+
+<p>请求方式：GET</p>
+
+<p>请求参数1：公共参数</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">Format</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">返回值的类型，支持JSON与XML。默认为XML</td>
+</tr>
+<tr>
+<td style="text-align: left">Version</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">API版本号，为日期形式：YYYY-MM-DD，本版本对应为2014-11-11</td>
+</tr>
+<tr>
+<td style="text-align: left">AccessKeyId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">阿里云颁发给用户的访问服务所用的密钥ID</td>
+</tr>
+<tr>
+<td style="text-align: left">Signature</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">签名结果串，关于签名的计算方法，请参见<a href="https://help.aliyun.com/document_detail/35096.html?spm=a2c4g.11186623.2.3.2gIXxf">签名机制</a></td>
+</tr>
+<tr>
+<td style="text-align: left">SignatureMethod</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">签名方式，目前支持HMAC-SHA1</td>
+</tr>
+<tr>
+<td style="text-align: left">Timestamp</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">请求的时间戳。日期格式按照ISO8601标准表示，并需要使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ。例如，2014-11-11T12:00:00Z（为北京时间2014年11月11日20点0分0秒）</td>
+</tr>
+<tr>
+<td style="text-align: left">SignatureVersion</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">签名算法版本，目前版本是1.0</td>
+</tr>
+<tr>
+<td style="text-align: left">SignatureNonce</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">唯一随机数，用于防止网络重放攻击。用户在不同请求间要使用不同的随机数值</td>
+</tr>
+<tr>
+<td style="text-align: left">RegionId</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">仅支持 cn-hangzhou</td>
+</tr>
+<tr>
+<td style="text-align: left">Action</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">调用接口的名称，如“Shield”</td>
+</tr>
+</tbody>
+</table>
+
+<p>请求参数2： 接口参数</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><strong>AppInfo</strong></td>
+<td style="text-align: left">JSON</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">待加固的应用信息,详细见下</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Channel</strong></td>
+<td style="text-align: left">JSON</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">渠道列表，多渠道加固时填写</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>Enhance</strong></td>
+<td style="text-align: left">JSON</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">自定义加固信息，配置自定义加固时填写</td>
+</tr>
+</tbody>
+</table>
+
+<p>AppInfo参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">dataType</td>
+<td style="text-align: left">JSON</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">APP数据类型 1-App URL</td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">APP数据：dataType=1时填写 App包的下载地址</td>
+</tr>
+<tr>
+<td style="text-align: left">md5</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">APP包的MD5值，dataType=1时必填，用于文件校验</td>
+</tr>
+<tr>
+<td style="text-align: left">size</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">APP包大小（单位：字节），dataType=1时必填，用于文件校验</td>
+</tr>
+<tr>
+<td style="text-align: left">callbackUrl</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">任务处理完成后的反向通知回调地址，dataType=1时必填，通知为GET请求，请求URL：callbackUrl+”?item_id=xxx&amp;task_status=1”；item_id为应用加固接口返回的任务ID；task_status为任务状态：1-已完成,2-处理中,3-处理出错，4-处理超时；对于应用加固，接收到通知后如果 task_status 为1则可通过对应的查询接口查询加固结果</td>
+</tr>
+<tr>
+<td style="text-align: left">appOsType</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">app 类型，1-apk</td>
+</tr>
+</tbody>
+</table>
+
+<p>Channel参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">metaName</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">AndroidManifest.xml 中用于表示渠道信息的meta-data标签的android:name</td>
+</tr>
+<tr>
+<td style="text-align: left">values</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">渠道名称列表</td>
+</tr>
+</tbody>
+</table>
+
+<p>Enhance参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">enhanceType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">指定dex加固类型：0-不加固，1-轻量级加固，2-整体加固</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>javaAntiDex2Jar</strong></td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">渠道名称列表</td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>javaConstEncrypt</strong></td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">Java反dex2jar信息，配置java层常量加固时填写</td>
+</tr>
+<tr>
+<td style="text-align: left">soEnhance</td>
+<td style="text-align: left">List<String></td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">so加固信息，配置自定义so加固时填写</td>
+</tr>
+<tr>
+<td style="text-align: left">enhanceType</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">指定so加固类型：0-不加固，1-轻量级加固，2-重量级加固</td>
+</tr>
+</tbody>
+</table>
+
+<p>javaAntiDex2Jar参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">percent</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">指定反dex2jar的百分比配置</td>
+</tr>
+</tbody>
+</table>
+
+<p>javaConstEncrypt参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">percent</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">NO</td>
+<td style="text-align: left">指定常量加固的百分比配置</td>
+</tr>
+</tbody>
+</table>
+
+<p>请求实例：<br/>
+<a href="https://jaq.aliyuncs.com/?Format=JSON">https://jaq.aliyuncs.com/?Format=JSON</a><br/>
+&amp;<strong>Channel</strong>={&quot;metaName&quot;:&quot;channel&quot;,&quot;values&quot;:[&quot;91&quot;,&quot;360&quot;]}<br/>
+&amp;<strong>SignatureMethod</strong>=HMAC-SHA1<br/>
+&amp;<strong>Signature</strong>=EYXamTa+RIafYaPoUdwHdwWpSvA=<br/>
+&amp;<strong>Timestamp</strong>=2016-06-05T06:41:30Z<br/>
+&amp;<strong>Enhance</strong>={&#39;enhanceType&#39;: -1, &#39;javaAntiDex2jar&#39;: {&#39;percent&#39;: 20},&#39;javaConstEncrypt&#39;: {&#39;percent&#39;: 20},&#39;soEnhance&#39;: {&#39;enhanceType&#39;: 1,&#39;soFileList&#39;: [&#39;lib/armeabi/libbitmaps.so&#39;,&#39;lib/armeabi/libgifimage.so&#39;]}}<br/>
+&amp;<strong>Action</strong>=DiyShield<br/>
+&amp;<strong>AccessKeyId</strong>=accessKeyId<br/>
+&amp;<strong>AppInfo</strong>={&quot;appOsType&quot;:1,&quot;callbackUrl&quot;:&quot;<a href="http://aaa.com/callback%22,%22data%22:%22http://g01.alibaba-inc.com/tfscom/LB1PaMeKXXXXXX8XFXXXXXXXXXX.tfsprivate1446115983140-375%22,%22dataType%22:1,%22md5%22:%22ce86f08da845d0af6d9df2a958de17b0%22,%22size%22:1713656%7D&amp;**RegionId**=cn-hangzhou">http://aaa.com/callback&quot;,&quot;data&quot;:&quot;http://g01.alibaba-inc.com/tfscom/LB1PaMeKXXXXXX8XFXXXXXXXXXX.tfsprivate1446115983140-375&quot;,&quot;dataType&quot;:1,&quot;md5&quot;:&quot;ce86f08da845d0af6d9df2a958de17b0&quot;,&quot;size&quot;:1713656}&amp;**RegionId**=cn-hangzhou</a><br/>
+&amp;<strong>SignatureNonce</strong>=eac373bc-355f-4e9e-95fc-61cb986c8a80<br/>
+&amp;<strong>Version</strong>=2016-04-12<br/>
+&amp;<strong>SignatureVersion</strong>=1.0</p>
+
+<p>返回参数：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">ErrorCode</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">错误码</td>
+</tr>
+<tr>
+<td style="text-align: left">ErrorMsg</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">错误说明</td>
+</tr>
+<tr>
+<td style="text-align: left">Data</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">数据结果 数组</td>
+</tr>
+</tbody>
+</table>
+
+<p>data数组：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">名称</th>
+<th style="text-align: left">类型</th>
+<th style="text-align: left">是否必填</th>
+<th style="text-align: left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left">itemId</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">任务唯一标识,adef0394-3370-4e94-82c6-07af0d15a9cd，最少占用36字符</td>
+</tr>
+<tr>
+<td style="text-align: left">progress</td>
+<td style="text-align: left">INT</td>
+<td style="text-align: left">YES</td>
+<td style="text-align: left">任务处理进度：1-处理完成（可立即通过对应的查询接口查询处理结果），2-异步处理中（需等待 app_info.callback_url 接收到反向通知后再查询结果）；对于 app_info.data_type 为1目前都是异步处理，此字段返回2</td>
+</tr>
+</tbody>
+</table>
+
+</div></body>
+
+</html>
